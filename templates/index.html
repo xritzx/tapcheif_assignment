@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>TapCheif Search</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-3"> Welcome to TapCheif search</h1>
+        </div>
+        <div class=" row">
+            <div class="col">
+                <form method="post" class="form-group" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="text"></textarea>
+                    <br>
+                    <input type="file" name="pdf_file" class="btn btn-danger" value="Scan pdf">
+                    <button type="submit" class="btn btn-info">Submit Passage</button>
+                </form>
+            </div>
+            <div class="col">
+                <!-- Searching a word in the passage -->
+                <input type="text" id="search_word" style="width: 80%; margin-right: 10px ;">
+                <button id="search_button" class="btn btn-success">Search</button><br>
+                <br>
+                <div id="result" style="margin: auto; height: 180px; margin: auto; overflow-y: scroll;"></div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                {% if passage %}
+                <p>{{passage}}</p>
+                {% endif %}
+                <hr>
+            </div>
+        </div>
+    </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+        </script>
+      <script>
+          $("#search_button").click(function(){
+            var data = document.getElementById("search_word").value;  
+            var query = "/search/"+data;
+            $.ajax({
+                type: "GET",
+                url: query,
+                data: {},
+                dataType: 'html',
+                success: (res)=> {  
+                  console.log(res);
+                  document.getElementById("result").innerHTML=res;
+                }
+            });
+          });
+      </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<ul class="list-group">
+{% for doc in ten_documents %}
+    <h6>Frequency -> {{doc.freq}} - Document #{{doc.id}}</h6>
+    <li class="list-group-item">{{doc.text}}</li>
+{% endfor %}
+</ul>
