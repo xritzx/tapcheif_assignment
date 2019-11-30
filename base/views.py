@@ -23,7 +23,7 @@ def index(request):
 
         if text_form.is_valid():
             passage = ""
-            if request.FILES['pdf_file']:
+            if 'pdf_file' in request.FILES:
                 pdf = request.FILES['pdf_file']
                 fileSys = FileSystemStorage()
                 filename = fileSys.save(pdf.name, pdf)

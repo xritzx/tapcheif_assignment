@@ -31,7 +31,7 @@ class InvertedIndex:
         
     def invertify_document(self, document):
         # Document recieved is adictionary of the paragraph with an id
-        doc = re.sub(r"[^a-zA-Z0-9]+", ' ', document['text']).lower() # Meh, we need to remove 'special' characters
+        doc = re.sub(r'[^\w\s]','', document['text']).lower() # Meh, we need to remove 'special' characters
         words = doc.split(' ')
         wrappers_dict = dict()
         
