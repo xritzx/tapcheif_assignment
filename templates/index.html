@@ -32,9 +32,11 @@
         </div>
         <br>
         <div class="row">
+            <hr>
+            <h5 class="display-4">File  -</h5>
             <div class="col">
                 {% if passage %}
-                <p>{{passage}}</p>
+                <p style="font-weight: 100;">{{passage}}</p>
                 {% endif %}
                 <hr>
             </div>
@@ -44,7 +46,7 @@
         </script>
       <script>
           $("#search_button").click(function(){
-            var data = document.getElementById("search_word").value;  
+            var data = document.getElementById("search_word").value.toLowerCase();  
             var query = "/search/"+data;
             $.ajax({
                 type: "GET",
