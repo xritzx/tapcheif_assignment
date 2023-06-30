@@ -15,7 +15,7 @@ Pillow==8.1.1
 progressbar2==3.47.0
 psycopg2==2.8.4
 pylint==2.4.2
-PyPDF2==1.26.0
+PyPDF2==1.27.9
 python-utils==2.3.0
 pytz==2019.2
 six==1.12.0
